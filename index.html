@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="index.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="container">
+        <img src="map.png" alt="">
+        <div id="location-details">Clik en el boton 'Obtener mi ubicación'</div>
+        <button id="get-location">Obtener mi ubicación</button>
+
+        <!-- <form action="" method="get" id="mostrar" style="display:none;"> -->
+            <div id="mostrar" style="display:none;">
+                <p>Para guardar la ubicación:</p><br>
+                
+                <label>1. Presione el boton 'Siguiente'.</label><br>
+                <label>2. Abra el programa.</label><br>
+                <label>3. De clik en el botón 'Aceptar ubicación'.</label><br><br><br>
+                <!-- <input type="text" id="lugar" readonly name="lugar"> -->
+                <button id="save-location" onclick="genPDF()">Siguiente</button>
+            </div>
+        <!-- </form> -->
+
+    </div>
+    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="jspdf.min.js"></script>
+    <script type="text/javascript">
+        function genPDF(){
+            var doc = new jsPDF();
+            let texto = document.getElementById("location-details").textContent;
+            doc.text(20,20,texto)
+            doc.save('FileLoc.pdf')
+        }
+    </script>
+</body>
+</html>
